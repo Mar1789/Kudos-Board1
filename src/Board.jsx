@@ -1,40 +1,9 @@
-import { useState, useEffect } from "react";
-import "./Board.css";
+import "./App.css"
 const Board = (props) => {
-    function Delete(e){
-        fetch(`http://localhost:3000/board/${props.id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-    }).then((data) =>
-      data.json().then((data) => {
-        console.log(data);
-      })
-    );
-    }
-  return (
-    <div className="board">
-      <div className="main">
-        <img
-          className="boardImage"
-          src="https://images.unsplash.com/photo-1621075160523-b936ad96132a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-          alt="NFT"
-        />
-        <p className="description">
-          {props.title}
-        </p>
-        <h2>{props.category}</h2>
-        <div className="duration"></div>
-        <hr/>
-        <div className="buttons">
-          <div className="wrapper">
-            <button>View Board</button>
-            <button onClick={Delete}>Delete Board</button>
-          </div>
+    return(
+        <div className="website">
+            <h2>{`WELCOME ${props.id}`}</h2>
         </div>
-      </div>
-    </div>
-  );
-};
+    )
+}
 export default Board;

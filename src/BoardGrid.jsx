@@ -1,35 +1,52 @@
 import { useState, useEffect } from "react";
-import Board from "./Board.jsx";
+import Card from "./Card.jsx";
 import Modal from "./Modal.jsx";
 const BoardGrid = () => {
+  let url;
   const [board, setBoard] = useState([]);
-  const [count, setCount] = useState(1);
   const [search, setSearch] = useState("");
   const [create, setCreate] = useState([]);
   const [open, setOpen] = useState(false);
+  const [render, setRender] = useState("")
+
 
   useEffect(() => {
-    fetch("http://localhost:3000/board", {
-      method: "GET",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-    }).then((data) =>
-      data.json().then((data) => {
-        setBoard(data);
-      })
-    );
-  }, [board, create]);
+    setRender("");
+    if(search !== ""){
+      url = `http://localhost:3000/search/${search}`
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+      }).then((data) =>
+        data.json().then((data) => {
+          setBoard(data);
+        })
+      );
+    } else {
+      url = "http://localhost:3000/board";
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+      }).then((data) =>
+        data.json().then((data) => {
+          setBoard(data);
+        })
+      );
+      
+      
+    }
+  
+  }, [create, search, render]);
   function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     setSearch(formData.get("search"));
-    if (count === 1) {
-      setBoard(formData.get("search"));
-    } else {
-      setBoard((board) => [...board, formData.get("search")]);
-    }
+
   }
   // function handleFilter(e){
   //     e.preventDefault();
@@ -58,7 +75,7 @@ const BoardGrid = () => {
     <>
       <form onSubmit={handleSubmit}>
         <label>
-          <input className="search" type="text" placeholder="Search.."></input>
+          <input className="search" type="text" name="search" placeholder="Search.."></input>
         </label>
       </form>
       <div className="button-grid">
@@ -73,7 +90,7 @@ const BoardGrid = () => {
 
       <div className="container">
       {board.map(card => (
-        <Board key={card.id} url="https://i.redd.it/nfzw8hbxlrg71.jpg" title={card.title} category={card.category} id={card.id}/>
+        <Card key={card.id} url="https://i.redd.it/nfzw8hbxlrg71.jpg" title={card.title} category={card.category} id={card.id} render={setRender}/>
       ))}
       </div>
       <footer>
