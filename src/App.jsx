@@ -24,7 +24,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Home/>}/>
         {board.map(card => (
-          <Route key={card.id} path={`/board/${card.id}`} element={<Board id={card.id}/>}/>
+          <Route key={card.id} path={`/board/${card.id}`} element={<Board id={card.id}/> }/>
         ))}
       </Routes>
     </Router>

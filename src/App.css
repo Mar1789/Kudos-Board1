@@ -72,7 +72,6 @@ body{
   width: 100%;
   margin-top: 22px;
   flex-direction:row;
-  
 }
 
 footer { 
@@ -129,12 +128,13 @@ footer p{
   margin-right: auto;
   width: 400px
 }
-h3{
-  position: relative;
+.h3-card{
+  display: flex;
+  justify-content: center;
   right: -100px;
   max-height: 27px;
 }
-.modal-content form{
+.board-form{
   display: inline-block;
   
   top: 200px;

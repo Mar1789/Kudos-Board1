@@ -4,7 +4,6 @@ const Modal = (props) => {
   const [data, setData] = useState([]);
   const [video, setVideo] = useState("");
   let id = props.query;
-  let url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
 
   function handleClick(e) {
     e.preventDefault();
@@ -40,7 +39,7 @@ const Modal = (props) => {
           &times;
         </span>
         <h3>Create a new board</h3>
-        <form onSubmit={handleClick}>
+        <form className="board-form" onSubmit={handleClick}>
           <label htmlFor="title">Title:</label>
           <input name="title" required></input>
           <br></br>
