@@ -1,19 +1,18 @@
 import { useState, useEffect } from "react";
-import Card from "./BoardCard.jsx";
+import Card from "./Card.jsx";
 import CardModal from "./CardModal.jsx";
 import "./BoardWebsite.css"
 const CardGrid = (props) => {
   let url;
   const [board, setBoard] = useState([]);
-  const [search, setSearch] = useState("");
   const [create, setCreate] = useState([]);
   const [open, setOpen] = useState(false);
   const [render, setRender] = useState("");
-  const [filter, setFilter] = useState("");
 
   useEffect(() => {
+    console.log("RENDERED");
     setRender("");
-    url = `http://localhost:3000/cards`;
+    url = `http://localhost:3000/cards/${props.id}`;
     fetch(url, {
       method: "GET",
       headers: {
@@ -21,10 +20,11 @@ const CardGrid = (props) => {
       },
     }).then((data) =>
       data.json().then((data) => {
+        console.log("TEST", data);
         setBoard(data);
       })
     );
-  }, [create, search, render, filter]);
+  }, [create, render]);
 
   function openModal() {
     setOpen(true);
@@ -37,17 +37,18 @@ const CardGrid = (props) => {
   return (
     <>
         <div className="create-card">
-            <button onClick={openModal}>Create Card</button>
+            <button className="button" onClick={openModal}>Create Card</button>
         </div>
-      {open && <CardModal create={setCreate} close={closeModal} />}
+      {open && <CardModal id={props.id} create={setCreate} close={closeModal} />}
       <div className="container">
         {board.map((card) => (
           <Card
             key={card.id}
-            url="https://i.redd.it/nfzw8hbxlrg71.jpg"
+            url={card.gif}
             title={card.title}
-            category={card.category}
+            description={card.description}
             id={card.id}
+            like={card.likecount}
             render={setRender}
           />
         ))}

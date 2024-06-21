@@ -11,6 +11,7 @@ const BoardGrid = () => {
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
+    console.log("RENDERED BOARD");
     setRender("");
     if (filter !== "") {
       url = `http://localhost:3000/filter/${filter}`;

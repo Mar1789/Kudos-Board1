@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./Board.css";
 const Board = (props) => {
     function Delete(e){
-        fetch(`http://localhost:3000/board/${props.id}`, {
+        fetch(`http://localhost:3000/card/${props.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "Application/json",
@@ -13,28 +13,38 @@ const Board = (props) => {
     );
     props.render("1");
     }
-    function View(e){
-      window.location.href = `/board/${props.id}`
-      
+    function handleLike() {
+        console.log(props.id);
+        fetch(`http://localhost:3000/cards/${props.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    }).then((data) =>
+      data.json().then((data) => {
+      })
+    );
+    props.render("1");
     }
+
   return (
     <div className="board">
       <div className="main">
         <img
           className="boardImage"
-          src="https://images.unsplash.com/photo-1621075160523-b936ad96132a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          src={props.url}
           alt="NFT"
         />
         <p className="description">
-          {props.title}
+          {props.description}
         </p>
-        <h2>{props.category}</h2>
+        <h2>{props.title}</h2>
         <div className="duration"></div>
         <hr/>
         <div className="buttons">
           <div className="wrapper">
-            <button onClick={View}>View Board</button>
-            <button onClick={Delete}>Delete Board</button>
+            <button className="delete" onClick={handleLike}>Like: {props.like}</button>
+            <button className="delete" onClick={Delete}>Delete Card</button>
           </div>
         </div>
       </div>

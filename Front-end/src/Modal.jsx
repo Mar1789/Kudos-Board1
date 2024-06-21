@@ -38,12 +38,10 @@ const Modal = (props) => {
         <span className="close" onClick={Close}>
           &times;
         </span>
-        <h3>Create a new board</h3>
+        <h3 className="h3-card">Create a new board</h3>
         <form className="board-form" onSubmit={handleClick}>
-          <label htmlFor="title">Title:</label>
-          <input name="title" required></input>
-          <br></br>
-          <select name="category">
+          <input className="title" placeholder="Title.." name="title" required></input>
+          <select className="category" name="category">
             <option value="">Category: </option>
             <option value="Recent">Recent</option>
             <option value="Celebration">Celebration</option>
@@ -51,8 +49,7 @@ const Modal = (props) => {
             <option value="Thank You">Thank You</option>
           </select>
           <br></br>
-          <label htmlFor="author">Author: </label>
-          <input name="author" required></input>
+          <input className="author" placeholder="Author.." name="author" required></input>
           <br></br>
           <button>Submit</button>
         </form>

@@ -14,14 +14,17 @@ const CardModal = (props) => {
     const form = e.target;
     const formData = new FormData(form);
     const arr = [];
-    console.log(formData.get("category"));
+    if(url === ""){
+        window.alert("Please select a gif for your card!");
+        return;
+    }
     arr[0] = formData.get("title");
-    arr[1] = formData.get("author");
-    arr[2] = formData.get("category");
-    console.log(arr);
-    fetch(`http://localhost:3000/${id}`, {
+    arr[1] = formData.get("description");
+    arr[2] = formData.get("owner");
+    arr[3] = url;
+    fetch(`http://localhost:3000/${props.id}`, {
       method: "POST",
-      body: JSON.stringify({ title: arr[0], author: arr[1], category: arr[2] }),
+      body: JSON.stringify({ title: arr[0], description: arr[1],  gif: arr[3], owner: arr[2] }),
       headers: {
         "Content-Type": "Application/json",
       },
@@ -32,6 +35,7 @@ const CardModal = (props) => {
     );
     props.create(arr);
     props.close();
+    setUrl("");
   }
   function Close() {
     setGif(false);
@@ -53,24 +57,18 @@ const CardModal = (props) => {
         </span>
         <h3 className="h3-card">Create a new Card</h3>
         <form onSubmit={handleClick} className="info">
-          <label className="title" htmlFor="title">
-            Title:<input className="box" name="title" required></input>
-          </label>
+          <input placeholder="Title.." className="box" name="title" required></input>
           <br></br>
-          <label className="description" htmlFor="description">
-            Text:<input className="box" name="description" required></input>
-          </label>
+          <input placeholder="Description.." className="box" name="description" required></input>
           <br />
-          <label className="owner" htmlFor="owner">
-            Owner: <input className="box" name="owner" required></input>
-            <button className="description">Submit</button>
-          </label>
+          <input className="box" name="owner" ></input>
+            <div className="submit"><button className="button">Submit</button></div>
           <br />
         </form>
         <form onSubmit={OpenGIF} className="gifSearch">
           <label htmlFor="gif">Search GIF Here: </label>
           <input name="GIF"></input>
-          <button type="submit" className="">
+          <button type="submit" className="button">
             Search
           </button>
         </form>
