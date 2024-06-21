@@ -11,7 +11,7 @@ const Board = (props) => {
                     </div>
                 </header>   
             </div>
-            <CardGrid id={props.id}/>
+            <CardGrid id={props.id} fetch={props.fetch}/>
         </>
     )
 }

@@ -22,7 +22,7 @@ const CardModal = (props) => {
     arr[1] = formData.get("description");
     arr[2] = formData.get("owner");
     arr[3] = url;
-    fetch(`http://localhost:3000/${props.id}`, {
+    fetch(`https://kudos-board1.onrender.com/${props.id}`, {
       method: "POST",
       body: JSON.stringify({ title: arr[0], description: arr[1],  gif: arr[3], owner: arr[2] }),
       headers: {

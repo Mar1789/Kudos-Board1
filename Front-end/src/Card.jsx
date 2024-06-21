@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./Board.css";
 const Board = (props) => {
     function Delete(e){
-        fetch(`http://localhost:3000/card/${props.id}`, {
+        fetch(`https://kudos-board1.onrender.com/card/${props.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "Application/json",
@@ -15,7 +15,7 @@ const Board = (props) => {
     }
     function handleLike() {
         console.log(props.id);
-        fetch(`http://localhost:3000/cards/${props.id}`, {
+        fetch(`https://kudos-board1.onrender.com/cards/${props.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "Application/json",

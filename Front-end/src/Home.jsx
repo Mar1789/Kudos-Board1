@@ -1,7 +1,7 @@
 import './App.css'
 import BoardGrid from './BoardGrid.jsx'
 
-function Home() {
+function Home(props) {
 
   return (
     <>
@@ -14,7 +14,7 @@ function Home() {
     </div>
     </header>
     </div>
-    <BoardGrid/>
+    <BoardGrid fetch={props.fetch}/>
     </>
 
   )

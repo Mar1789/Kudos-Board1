@@ -15,7 +15,7 @@ const Modal = (props) => {
     arr[1] = formData.get("author");
     arr[2] = formData.get("category");
     console.log(arr);
-    fetch("http://localhost:3000/board", {
+    fetch("https://kudos-board1.onrender.com/board", {
       method: "POST",
       body: JSON.stringify({ title: arr[0], author: arr[1], category: arr[2] }),
       headers: {

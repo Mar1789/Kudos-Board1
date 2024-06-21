@@ -9,7 +9,7 @@ const CardGrid = (props) => {
   
   function CardFetch(){
     console.log("TEST")
-    url = `http://localhost:3000/cards/${props.id}`;
+    url = `https://kudos-board1.onrender.com/cards/${props.id}`;
     fetch(url, {
       method: "GET",
       headers: {

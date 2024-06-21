@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import BoardCard from "./BoardCard.jsx";
 import Modal from "./Modal.jsx";
-const BoardGrid = () => {
+const BoardGrid = (props) => {
   let url;
   const [board, setBoard] = useState([]);
   const [search, setSearch] = useState("");
@@ -9,8 +9,9 @@ const BoardGrid = () => {
   const [filter, setFilter] = useState("");
 
   function fetchData(filter, search) {
+    props.fetch();
     if (filter !== "") {
-      url = `http://localhost:3000/filter/${filter}`;
+      url = `https://kudos-board1.onrender.com/filter/${filter}`;
       fetch(url, {
         method: "GET",
         headers: {
@@ -22,7 +23,7 @@ const BoardGrid = () => {
         })
       );
     } else if (search !== "") {
-      url = `http://localhost:3000/search/${search}`;
+      url = `https://kudos-board1.onrender.com/search/${search}`;
       fetch(url, {
         method: "GET",
         headers: {
@@ -34,7 +35,7 @@ const BoardGrid = () => {
         })
       );
     } else {
-      url = "http://localhost:3000/board";
+      url = "https://kudos-board1.onrender.com/board";
       fetch(url, {
         method: "GET",
         headers: {
