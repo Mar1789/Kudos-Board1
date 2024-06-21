@@ -9,9 +9,10 @@ const Board = (props) => {
       },
     }).then((data) =>
       data.json().then((data) => {
+        props.fetch();
       })
     );
-    props.render("1");
+   
     }
     function View(e){
       window.location.href = `/board/${props.id}`

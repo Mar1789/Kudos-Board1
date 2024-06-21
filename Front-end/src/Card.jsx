@@ -9,9 +9,9 @@ const Board = (props) => {
       },
     }).then((data) =>
       data.json().then((data) => {
+        props.fetch();
       })
     );
-    props.render("1");
     }
     function handleLike() {
         console.log(props.id);
@@ -22,9 +22,9 @@ const Board = (props) => {
       },
     }).then((data) =>
       data.json().then((data) => {
+        props.fetch();
       })
     );
-    props.render("1");
     }
 
   return (

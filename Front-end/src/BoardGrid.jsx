@@ -1,18 +1,14 @@
 import { useState, useEffect } from "react";
-import BoardCard from "./BoardCard.jsx"
+import BoardCard from "./BoardCard.jsx";
 import Modal from "./Modal.jsx";
 const BoardGrid = () => {
   let url;
   const [board, setBoard] = useState([]);
   const [search, setSearch] = useState("");
-  const [create, setCreate] = useState([]);
   const [open, setOpen] = useState(false);
-  const [render, setRender] = useState("");
   const [filter, setFilter] = useState("");
 
-  useEffect(() => {
-    console.log("RENDERED BOARD");
-    setRender("");
+  function fetchData(filter, search) {
     if (filter !== "") {
       url = `http://localhost:3000/filter/${filter}`;
       fetch(url, {
@@ -50,7 +46,11 @@ const BoardGrid = () => {
         })
       );
     }
-  }, [create, search, render, filter]);
+  }
+
+  useEffect(() => {
+    fetchData(filter, search);
+  }, [search, filter]); // remove render etc
   function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
@@ -74,6 +74,9 @@ const BoardGrid = () => {
       setFilter(e.target.textContent);
     }
   }
+  function boardGridFetch() {
+    fetchData(filter, search)
+  }
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -93,8 +96,8 @@ const BoardGrid = () => {
         <button onClick={FilterCard}>Thank You</button>
         <button onClick={FilterCard}>Inspiration</button>
         <button onClick={openModal}>Create a New Board</button>
-        </div>
-      {open && <Modal create={setCreate} close={closeModal} />}
+      </div>
+      {open && <Modal fetch={boardGridFetch} close={closeModal} />}
 
       <div className="container">
         {board.map((card) => (
@@ -104,7 +107,7 @@ const BoardGrid = () => {
             title={card.title}
             category={card.category}
             id={card.id}
-            render={setRender}
+            fetch={boardGridFetch}
           />
         ))}
       </div>

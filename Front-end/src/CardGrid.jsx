@@ -5,13 +5,10 @@ import "./BoardWebsite.css"
 const CardGrid = (props) => {
   let url;
   const [board, setBoard] = useState([]);
-  const [create, setCreate] = useState([]);
   const [open, setOpen] = useState(false);
-  const [render, setRender] = useState("");
-
-  useEffect(() => {
-    console.log("RENDERED");
-    setRender("");
+  
+  function CardFetch(){
+    console.log("TEST")
     url = `http://localhost:3000/cards/${props.id}`;
     fetch(url, {
       method: "GET",
@@ -24,7 +21,11 @@ const CardGrid = (props) => {
         setBoard(data);
       })
     );
-  }, [create, render]);
+  }
+
+  useEffect(() => {
+    CardFetch();
+  }, []);
 
   function openModal() {
     setOpen(true);
@@ -39,7 +40,7 @@ const CardGrid = (props) => {
         <div className="create-card">
             <button className="button" onClick={openModal}>Create Card</button>
         </div>
-      {open && <CardModal id={props.id} create={setCreate} close={closeModal} />}
+      {open && <CardModal id={props.id} fetch={CardFetch} close={closeModal} />}
       <div className="container">
         {board.map((card) => (
           <Card
@@ -49,7 +50,7 @@ const CardGrid = (props) => {
             description={card.description}
             id={card.id}
             like={card.likecount}
-            render={setRender}
+            fetch={CardFetch}
           />
         ))}
       </div>

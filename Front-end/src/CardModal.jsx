@@ -31,9 +31,9 @@ const CardModal = (props) => {
     }).then((data) =>
       data.json().then((data) => {
         console.log(data);
+        props.fetch();
       })
     );
-    props.create(arr);
     props.close();
     setUrl("");
   }

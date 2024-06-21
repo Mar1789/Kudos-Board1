@@ -23,10 +23,10 @@ const Modal = (props) => {
       },
     }).then((data) =>
       data.json().then((data) => {
+        props.fetch();
         console.log(data);
       })
     );
-    props.create(arr);
     props.close();
   }
   function Close() {
