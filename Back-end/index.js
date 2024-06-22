@@ -137,6 +137,9 @@ app.put("/cards/:id", async (req, res) => {
 
   app.delete('/board/:id', async (req, res) => { // Delete Board
     const { id } = req.params;
+    const deletedComments = await prisma.comments.deleteMany({
+      where: {cardId : parseInt(id)}
+    })
     const deleteCards = await prisma.card.deleteMany({
       where:{ boardId: parseInt(id) }
     }) 
