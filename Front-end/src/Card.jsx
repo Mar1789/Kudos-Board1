@@ -16,7 +16,6 @@ const Board = (props) => {
     );
   }
   function handleLike() {
-    console.log(props.id);
     fetch(`https://kudos-board1.onrender.com/cards/${props.id}`, {
       method: "PUT",
       headers: {

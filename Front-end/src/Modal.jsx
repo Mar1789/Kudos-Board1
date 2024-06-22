@@ -10,11 +10,9 @@ const Modal = (props) => {
     const form = e.target;
     const formData = new FormData(form);
     const arr = [];
-    console.log(formData.get("category"));
     arr[0] = formData.get("title");
     arr[1] = formData.get("author");
     arr[2] = formData.get("category");
-    console.log(arr);
     fetch("https://kudos-board1.onrender.com/board", {
       method: "POST",
       body: JSON.stringify({ title: arr[0], author: arr[1], category: arr[2] }),
@@ -24,7 +22,6 @@ const Modal = (props) => {
     }).then((data) =>
       data.json().then((data) => {
         props.fetch();
-        console.log(data);
       })
     );
     props.close();

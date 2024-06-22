@@ -8,7 +8,6 @@ const CardGrid = (props) => {
   const [open, setOpen] = useState(false);
   
   function CardFetch(){
-    console.log("TEST")
     url = `https://kudos-board1.onrender.com/cards/${props.id}`;
     fetch(url, {
       method: "GET",
@@ -17,7 +16,6 @@ const CardGrid = (props) => {
       },
     }).then((data) =>
       data.json().then((data) => {
-        console.log("TEST", data);
         setBoard(data);
       })
     );

@@ -8,7 +8,7 @@ import Board from "./Board.jsx"
 function App() {
   const [board, setBoard] = useState([]);
   function Fetch(){
-    fetch("https://kudos-board1.onrender.com", {
+    fetch("https://kudos-board1.onrender.com/board", {
       method: "GET",
       headers: {
         "Content-Type": "Application/json",
@@ -33,7 +33,6 @@ function App() {
       <Routes>
       <Route path="/" element={<Home fetch={Fetch}/>}/>
         {board.map(card => (
-          console.log(card.id),
           <Route key={card.id} path={`/board/${card.id}`} element={<Board id={card.id}/> }/>
         ))}
       </Routes>

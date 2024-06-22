@@ -30,7 +30,6 @@ const CardModal = (props) => {
       },
     }).then((data) =>
       data.json().then((data) => {
-        console.log(data);
         props.fetch();
       })
     );
@@ -42,7 +41,6 @@ const CardModal = (props) => {
     props.close();
   }
   function OpenGIF(e) {
-    console.log("opengif");
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);

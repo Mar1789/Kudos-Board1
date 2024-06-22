@@ -56,7 +56,6 @@ const BoardGrid = (props) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    console.log(formData.get("search"));
     setSearch(formData.get("search"));
   }
 
@@ -68,7 +67,6 @@ const BoardGrid = (props) => {
     setOpen(false);
   }
   function FilterCard(e) {
-    console.log(e.target.textContent);
     if (e.target.textContent === "All") {
       setFilter("");
     } else {

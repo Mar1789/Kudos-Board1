@@ -7,7 +7,6 @@ const CardGrid = (props) => {
   const [board, setBoard] = useState([]);
 
   useEffect(() => {
-    console.log(props.search);
     url = `https://api.giphy.com/v1/gifs/search?api_key=8Wx85CkT4HlWZwjS3fvabfz5DHGoCmuD&q=${props.search}&limit=18&offset=0&rating=g&lang=en&bundle=messaging_non_clips`;
     fetch(url
     ).then((data) =>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./Board.css";
 const Board = (props) => {
     function Delete(e){
-        fetch(`https://kudos-board1.onrender.com/${props.id}`, {
+        fetch(`https://kudos-board1.onrender.com/board/${props.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "Application/json",

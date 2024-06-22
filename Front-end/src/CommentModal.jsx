@@ -9,7 +9,6 @@ const CardModal = (props) => {
     const formData = new FormData(form);
     let arr = [];
     arr[0] = formData.get("text");
-    console.log(arr[0]);
     fetch(`https://kudos-board1.onrender.com/comments/${props.id}`, {
       method: "POST",
       body: JSON.stringify({ text: arr[0] }),
@@ -18,7 +17,6 @@ const CardModal = (props) => {
       },
     }).then((data) =>
       data.json().then((data) => {
-        console.log(data);
         Comments();
       })
     );
@@ -36,7 +34,6 @@ const CardModal = (props) => {
     }).then((data) =>
       data.json().then((data) => {
         setComments(data);
-        console.log(comments);
       })
     );
   }
