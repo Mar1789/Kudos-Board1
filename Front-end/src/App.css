@@ -189,3 +189,12 @@ footer p{
   justify-content: center;
   width: 90%;
 }
+.home{
+  position: absolute;
+  color: white;
+  background-color: #2E2735;
+  padding: 6px;
+  width: 120px;
+  height: 70px;
+  border-radius: 5px;
+}

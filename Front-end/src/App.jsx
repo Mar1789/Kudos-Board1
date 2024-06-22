@@ -19,10 +19,16 @@ function App() {
       })
     );
   }
+  function HomePage(){
+    window.location.href = "/";
+
+  }
   useEffect(() => {
     Fetch();
   }, []);
   return (
+    <>
+    <button className='home' onClick={HomePage}>Home</button>
     <Router>
       <Routes>
       <Route path="/" element={<Home fetch={Fetch}/>}/>
@@ -32,6 +38,7 @@ function App() {
         ))}
       </Routes>
     </Router>
+    </>
   )
 }
 

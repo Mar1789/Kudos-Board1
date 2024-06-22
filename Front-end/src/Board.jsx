@@ -7,7 +7,7 @@ const Board = (props) => {
             <div className="website-cards">
                 <header>
                     <div className="center">
-                        <h2>{`Kuboard Board:  ${props.id}`} <br/></h2>
+                        <h2>{`🤝  Kuboard Board:  ${props.id} 🤝 ` } <br/></h2>
                     </div>
                 </header>   
             </div>

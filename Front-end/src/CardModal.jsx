@@ -61,7 +61,7 @@ const CardModal = (props) => {
           <br></br>
           <input placeholder="Description.." className="box" name="description" required></input>
           <br />
-          <input className="box" name="owner" ></input>
+          <input className="box" placeholder="Author.. (Optional)" name="owner" ></input>
             <div className="submit"><button className="button">Submit</button></div>
           <br />
         </form>
