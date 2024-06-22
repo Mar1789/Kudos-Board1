@@ -86,13 +86,7 @@ app.post('/comments/:id', async (req, res) => { // Makes Comments
   })
   res.json(newComment);
 })
-app.delete('/card/:id', async (req, res) => { // DELETE CARD
-  const { id } = req.params;
-  const deletedCard = await prisma.card.delete({
-    where: { id: parseInt(id) }
-  })
-  res.json(deletedCard);
-})
+
 app.get("/cards/:id", async (req, res) => { // Get Cards
   const id = parseInt(req.params.id);
   const result = await prisma.card.findMany({
@@ -133,7 +127,7 @@ app.put("/cards/:id", async (req, res) => {
   res.json(result);
 })
 
-  app.delete('/board/:id', async (req, res) => {
+  app.delete('/board/:id', async (req, res) => { // Delete Board
     const { id } = req.params;
     const deleteCards = await prisma.card.deleteMany({
       where:{ boardId: parseInt(id) }
@@ -142,4 +136,15 @@ app.put("/cards/:id", async (req, res) => {
       where: { id: parseInt(id) }
     })
     res.json(deletedBook);
+  })
+
+  app.delete('/card/:id', async (req, res) => { // DELETE CARD
+    const { id } = req.params;
+    const deletedComments = await prisma.comments.deleteMany({
+      where: {cardId : parseInt(id)}
+    })
+    const deletedCard = await prisma.card.delete({
+      where: { id: parseInt(id) }
+    })
+    res.json(deletedCard);
   })
