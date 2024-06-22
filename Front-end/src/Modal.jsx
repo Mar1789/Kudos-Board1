@@ -40,7 +40,6 @@ const Modal = (props) => {
           <input className="title" placeholder="Title.." name="title" required></input>
           <select className="category" name="category">
             <option value="">Category: </option>
-            <option value="Recent">Recent</option>
             <option value="Celebration">Celebration</option>
             <option value="Inspiration">Inspiration</option>
             <option value="Thank You">Thank You</option>

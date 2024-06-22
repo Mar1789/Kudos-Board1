@@ -11,7 +11,11 @@ const BoardGrid = (props) => {
   function fetchData(filter, search) {
     props.fetch();
     if (filter !== "") {
-      url = `https://kudos-board1.onrender.com/filter/${filter}`;
+      if (filter === "Recent") {
+        url = `https://kudos-board1.onrender.com/recent`;
+      } else {
+        url = `https://kudos-board1.onrender.com/filter/${filter}`;
+      }
       fetch(url, {
         method: "GET",
         headers: {
@@ -74,7 +78,7 @@ const BoardGrid = (props) => {
     }
   }
   function boardGridFetch() {
-    fetchData(filter, search)
+    fetchData(filter, search);
   }
   return (
     <>

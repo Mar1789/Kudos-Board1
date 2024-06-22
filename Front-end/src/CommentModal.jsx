@@ -20,7 +20,6 @@ const CardModal = (props) => {
         Comments();
       })
     );
-    // props.close();
   }
   function Close() {
     props.close();

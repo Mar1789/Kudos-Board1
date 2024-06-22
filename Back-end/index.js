@@ -35,7 +35,7 @@ app.get("/search/:id", async(req, res) => { // Search boards
     console.log(result);
     res.json(result);
 })
-app.get("/filter/:id", async(req, res) => { // Filters boards
+app.get("/filter/:id", async(req, res) => { // Filters boards by category
     const id = req.params.id;
     const result = await prisma.board.findMany({
       where: {
@@ -45,6 +45,14 @@ app.get("/filter/:id", async(req, res) => { // Filters boards
       }
     })
     res.json(result);
+})
+app.get("/recent", async(req, res) => { // Filters boards by recent
+  const result = await prisma.board.findMany({
+    orderBy: [{
+      id: 'desc',
+    }],
+  })
+  res.json(result);
 })
 
 app.post('/board', async (req, res) => {  // Creates Boards
