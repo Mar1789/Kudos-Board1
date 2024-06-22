@@ -30,5 +30,13 @@ model Card {
   board     Board @relation(fields: [boardId], references: [id])
   boardId   Int
   likecount Int
+  comments Comments[]
 }
 
+model Comments {
+ id        Int      @id @default(autoincrement())
+ text      String     
+ card      Card @relation(fields: [cardId], references: [id])
+ cardId    Int
+
+}

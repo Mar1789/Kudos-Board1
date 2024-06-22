@@ -13,7 +13,7 @@ app.listen(PORT, () => {
 })
 
 
-app.get("/board", async (req, res) => {
+app.get("/board", async (req, res) => {  // Gets all boards
     const books = await prisma.board.findMany(
       {
       include: {cards : true}
@@ -22,7 +22,7 @@ app.get("/board", async (req, res) => {
     res.json(books);
 })
 
-app.get("/search/:id", async(req, res) => {
+app.get("/search/:id", async(req, res) => { // Search boards
     const id = req.params.id;
     const result = await prisma.board.findMany({
       where: {
@@ -30,11 +30,12 @@ app.get("/search/:id", async(req, res) => {
           equals: id,
         }
       }
+      
     })
     console.log(result);
     res.json(result);
 })
-app.get("/filter/:id", async(req, res) => {
+app.get("/filter/:id", async(req, res) => { // Filters boards
     const id = req.params.id;
     const result = await prisma.board.findMany({
       where: {
@@ -46,7 +47,7 @@ app.get("/filter/:id", async(req, res) => {
     res.json(result);
 })
 
-app.post('/board', async (req, res) => {
+app.post('/board', async (req, res) => {  // Creates Boards
     const {title, author, category} = req.body;
     const newBook = await prisma.board.create({
         data: {
@@ -58,7 +59,7 @@ app.post('/board', async (req, res) => {
     res.json(newBook);
 })
 
-app.post('/:id', async (req, res) => {
+app.post('/:id', async (req, res) => { // Make a new board
   const  boardId = parseInt(req.params.id);
   const likecount = 0;
   const {title, description, gif, owner} = req.body;
@@ -74,6 +75,17 @@ app.post('/:id', async (req, res) => {
   })
   res.json(newCard);
 })
+app.post('/comments/:id', async (req, res) => { // Makes Comments
+  const cardId = parseInt(req.params.id);
+  const {text} = req.body;
+  const newComment = await prisma.comments.create({
+      data: {
+        text,
+        cardId
+      }
+  })
+  res.json(newComment);
+})
 app.delete('/card/:id', async (req, res) => { // DELETE CARD
   const { id } = req.params;
   const deletedCard = await prisma.card.delete({
@@ -81,18 +93,33 @@ app.delete('/card/:id', async (req, res) => { // DELETE CARD
   })
   res.json(deletedCard);
 })
-app.get("/cards/:id", async (req, res) => {
+app.get("/cards/:id", async (req, res) => { // Get Cards
   const id = parseInt(req.params.id);
   const result = await prisma.card.findMany({
-    where: { boardId: parseInt(id) },
+    where: {
+      boardId: parseInt(id)
+    },
+    include: {
+      comments: true
+    },
     orderBy: [{
-      id: 'asc',
-    }
-    ]
+      id: 'desc',
+    }],
   })
   res.json(result);
 })
-
+app.get("/comments/:id", async (req, res) => { // Get Comments
+  const id = parseInt(req.params.id);
+  const result = await prisma.comments.findMany({
+    where: {
+      cardId: parseInt(id)
+    },
+    orderBy: [{
+      id: 'desc',
+    }],
+  })
+  res.json(result);
+})
 app.put("/cards/:id", async (req, res) => {
   const id = parseInt(req.params.id);
   const result = await prisma.card.update({
@@ -105,9 +132,6 @@ app.put("/cards/:id", async (req, res) => {
   })
   res.json(result);
 })
-
-
-
 
   app.delete('/board/:id', async (req, res) => {
     const { id } = req.params;

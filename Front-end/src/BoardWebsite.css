@@ -127,3 +127,9 @@
   display: flex;
   justify-content: center;
 }
+.comment-container {
+    height: 375px;
+    margin-top: 30px;
+    overflow-y: auto;
+    gap: 10px; 
+  }

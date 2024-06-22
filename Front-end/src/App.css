@@ -198,3 +198,17 @@ footer p{
   height: 70px;
   border-radius: 5px;
 }
+.comment{
+  width: 300px;
+  margin: 50px auto;
+  background: #00bfb6;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  color: #fff;
+  font-family: arial;
+  position:relative;
+  margin-top: 20px;
+  
+
+}

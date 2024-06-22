@@ -8,7 +8,7 @@ import Board from "./Board.jsx"
 function App() {
   const [board, setBoard] = useState([]);
   function Fetch(){
-    fetch("https://kudos-board1.onrender.com/board", {
+    fetch("https://kudos-board1.onrender.com", {
       method: "GET",
       headers: {
         "Content-Type": "Application/json",
