@@ -52,19 +52,19 @@ https://github.com/Mar1789/Kudos-Board1/assets/116681148/a1bd9331-f635-483e-bbf9
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+The topics discussed in my labs help prepare me to complete the assignment since it went over how to use prisma and CRUD operations. A lot that I did not feel unprepared to complete were things I had to learn from experience and debugging.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
-  
-Add your response here
 
+If I had more time, I would have designed my website and modals much more nice so it could be visually distinctive. In my opinion, it looks simple and I wish I could have elevated the looks. 
+  
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I felt like creating app routes and code for the back end was great. The front end was fine as well since I had learned it last week. Things that did not go as planned were bugs like rerendering modified components like boards and cards. Sometimes it would not automatically rerender and I had to spend a day fixing the bug. Another thing that did not go as planned was hosting my project on render since the website would not route to unique pages due to a common error. I noticed how my peer had much cleaner code and I wish I could have done that next time
 
 ### Open-source libraries used
 
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+I want to give a shout out to George and Carter by helping me understand conceptual concepts clearly and being there to help me debug sections of my code after I try debugging for more than 18 minutes. They are really great people and I appreciate them being there with me.
